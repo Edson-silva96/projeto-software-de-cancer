@@ -56,7 +56,8 @@ Após a validação da melhor acurácia, o comitê treinado é serializado e exp
 
 O sistema de produção carrega o arquivo serializado e renderiza uma interface de nível corporativo para profissionais da saúde ou pesquisadores.
 
-![especialista](https://github.com/user-attachments/assets/fb635321-39c7-4ace-9ca4-c9a28493a3c2)
+<img width="1201" height="730" alt="alves" src="https://github.com/user-attachments/assets/74c90c20-d9c0-43af-b52b-be1996f9d5aa" />
+
 
 ### Características da Interface:
 1. **Ficha Clínica Digital:** Menus suspensos interativos (*Comboboxes*) que padronizam a entrada dos sintomas impedindo que o usuário digite valores fora do padrão esperado pela inteligência artificial.
@@ -66,3 +67,45 @@ O sistema de produção carrega o arquivo serializado e renderiza uma interface 
 ---
 
 ## 🔄 Fluxo de Operação do Usuário
+
+Ao processar as informações, telas informativas e alertas de diagnóstico são disparados indicando o nível de risco:
+
+![sainda](https://github.com/user-attachments/assets/e90da42d-790a-4c1a-af04-a74378a283c8)
+![saida2](https://github.com/user-attachments/assets/22aa5ffa-3ead-44b0-8031-1aaa708b326b)
+
+---
+
+## 🛠️ Como Executar o Projeto
+
+### Pré-requisitos
+Certifique-se de possuir o Python 3.8+ instalado e as mídias visuais (`edson_desenvolvedor.ico`, `edson_desenvolvedor.png`) no diretório raiz do script.
+
+### 1. Clonar e Instalar Dependências
+```bash
+# Clone o repositório
+git clone [https://github.com/seu-usuario/projeto-software-com-aprendizagem-de-maquina.git](https://github.com/seu-usuario/projeto-software-com-aprendizagem-de-maquina.git)
+
+# Acesse a pasta do projeto
+cd projeto-software-com-aprendizagem-de-maquina
+
+# Instale os pacotes requeridos
+pip install pandas numpy matplotlib scikit-learn pillow joblib
+
+2. Executar o Treinamento da IA
+Rode o script que fará a leitura do dataset, avaliação estatística e geração do arquivo .pkl:
+Bash
+python treinar_modelo.py
+
+3. Executar o Software com Interface Gráfica
+Após garantir que o arquivo especialista_em_cancer.pkl foi gerado com sucesso na raiz do diretório, inicialize a interface do usuário:
+Bash
+python interface_app.py
+
+4. Compilar para Produção (Gerar .exe Isolado)
+Para criar o instalador ou arquivo executável final para computadores Windows sem a necessidade de instalar Python no destino, utilize o PyInstaller:
+
+Bash
+pip install pyinstaller
+
+pyinstaller --noconsole --onefile --add-data "especialista_em_cancer.pkl;." --add-data "edson_desenvolvedor.png;." --add-data "edson_desenvolvedor.ico;." --icon=edson_desenvolvedor.ico interface_app.py
+O software compilado finalizado será gerado de forma autônoma dentro da pasta /dist.
